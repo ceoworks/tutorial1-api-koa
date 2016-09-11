@@ -1,0 +1,22 @@
+{
+  "name": "tutorial1-api-koa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "config": "^1.21.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "koa": "^2.0.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-router": "^7.0.1"
+  }
+}
