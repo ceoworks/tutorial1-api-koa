@@ -1,3 +1,5 @@
+const ObjectId = require('mongodb').ObjectID;
+
 class Model {
 	constructor(db, collectionName) {
 		this.name = collectionName;
@@ -9,6 +11,16 @@ class Model {
 			throw new Error('Db insertOne error');
 		}
 		return operation.ops[0];
+	}
+	async findOneById(id) {
+		let query = {
+			_id: ObjectId(id)
+		}
+		const result = await this.db.collection(this.name).findOne(query);
+		if (!result) {
+			throw new Error('Db findOneById error');
+		}
+		return result;
 	}
 }
 

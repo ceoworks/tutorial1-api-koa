@@ -14,10 +14,16 @@ router.get('/error/test', async () => {
 	throw Error('Error handling works!');
 });
 router.get('/', (ctx) => ctx.body = {hello: 'world'});
+
 router.post('/birds', async (ctx, next) => {
 	const data = ctx.request.body;
 	ctx.body = await db.Bird.insertOne(data);
 });
+router.get('/birds/:id', async (ctx, next) => {
+	const id = ctx.params.id;
+	ctx.body = await db.Bird.findOneById(id);
+});
+
 app.use(router.routes());
 
 db
