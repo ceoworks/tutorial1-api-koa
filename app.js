@@ -14,6 +14,10 @@ router.get('/error/test', async () => {
 	throw Error('Error handling works!');
 });
 router.get('/', (ctx) => ctx.body = {hello: 'world'});
+router.post('/birds', async (ctx, next) => {
+	const data = ctx.request.body;
+	ctx.body = await db.Bird.insertOne(data);
+});
 app.use(router.routes());
 
 db
