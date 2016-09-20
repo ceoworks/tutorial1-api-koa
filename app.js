@@ -23,6 +23,15 @@ router.get('/birds/:id', async (ctx, next) => {
 	const id = ctx.params.id;
 	ctx.body = await db.Bird.findOneById(id);
 });
+router.put('/birds/:id', async (ctx, next) => {
+	const id = ctx.params.id;
+	const data = ctx.request.body;
+	ctx.body = await db.Bird.findOneAndUpdate(id, data);
+});
+router.del('/birds/:id', async (ctx, next) => {
+	const id = ctx.params.id;
+	ctx.body = await db.Bird.removeOne(id);
+});
 
 app.use(router.routes());
 

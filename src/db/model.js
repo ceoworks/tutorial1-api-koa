@@ -22,6 +22,27 @@ class Model {
 		}
 		return result;
 	}
+	async findOneAndUpdate(id, data) {
+		const query = {_id: ObjectId(id)};
+		const modifier = {$set: data};
+		const options = {returnOriginal: false};
+		const operation = await this.db
+			.collection(this.name)
+			.findOneAndUpdate(query, modifier, options);
+
+		if (!operation.value) {
+			throw new Error('Db findOneAndUpdate error');
+		}
+		return operation.value;
+	}
+	async removeOne(id) {
+		const query = {_id: ObjectId(id)};
+		const operation = await this.db.collection(this.name).remove(query);
+		if (operation.result.n !== 1) {
+			throw new Error('Db remove error');
+		}
+		return {success: true};
+	}
 }
 
 module.exports = Model;
