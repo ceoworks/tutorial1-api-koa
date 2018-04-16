@@ -1,5 +1,7 @@
 # Node.js Heaven with Koa 2, Gulp, Babel, MongoDB and async/await
 
+# UPDATE - YOU NO LONGER NEED GULP AND BABEL TO USE async/await, SIMPLY USE NODE v8 and above
+
 Hello there, I hope you are interested in modern approach of building API’s with Node.js, cause it’s would be the main theme of this tutorial.
 
 Let’s make quick overview, what’s hidden in this article:
